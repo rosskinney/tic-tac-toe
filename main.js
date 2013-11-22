@@ -11,6 +11,12 @@ var player2 = 'junkfood';
 var currentPlayer = null;
 var game_over = false
 
+var player1_wins = 0
+var player2_wins = 0
+var player1_losses = 0
+var player2_losses = 0
+
+
 var setNextTurn = function () {
   if (currentPlayer === player1) {
     currentPlayer = player2;
@@ -72,9 +78,35 @@ $(document).on('click', '#board .space', function (e) {
 
 $(document).on('game-win', function (e, winner) {
   // TODO: Alert who won the game
+  
+if (currentPlayer === player1) {
+    player1_wins +=1;
+    player2_losses +=1;
+    console.log(currentPlayer + " has won # " + player1_wins + "game(s)");
+  }
+  else {
+    player2_wins +=1;
+    player1_losses +=1;
+    console.log(currentPlayer + " has won # " + player2_wins + "game(s)");
+  }
   alert(currentPlayer + " has won!");
   game_over = true;
 });
 
+$('#start-game').on('click', function(e){
+  console.log("start game button was pressed");
+  spaces = [
+    NaN, NaN, NaN,
+    NaN, NaN, NaN,
+    NaN, NaN, NaN
+  ];
+  game_over = false;
+  $('#board .space').removeClass(player1);
+  $('#board .space').removeClass(player2);
+  
+});
+
+$('#player1').text(player1);
+$('#player2').text(player2);
 // Start the game
 setNextTurn();
