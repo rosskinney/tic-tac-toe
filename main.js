@@ -31,8 +31,11 @@ var checkForWinner = function () {
     // TODO: Check for rest of game winning cases
   )
   {
-    console.log('somebody won');
     // TODO: Trigger 'game-win' event with the winning player as the event data
+   console.log(currentPlayer + ' has won');
+
+   $(document).trigger('game-win', currentPlayer);
+
   }
 };
 
@@ -52,6 +55,7 @@ $(document).on('click', '#board .space', function (e) {
 
 $(document).on('game-win', function (e, winner) {
   // TODO: Alert who won the game
+  alert(currentPlayer + " has won!");
 });
 
 // Start the game
