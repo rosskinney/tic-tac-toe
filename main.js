@@ -89,12 +89,27 @@ if (currentPlayer === player1) {
     player1_losses +=1;
     console.log(currentPlayer + " has won # " + player2_wins + "game(s)");
   }
+
+  //$('#player1').text(player1);
+  // $('p#player1').siblings('#score').text(""+player1_wins);
+  // //$('#player2').text(player2);
+  // $('p#player2').siblings('#score').text(""+player2_wins);
+
+  $("#player1").text(player1 + " has won " + player1_wins + " games.");
+  $("#player2").text(player2 + " has won " + player2_wins + " games.");
   alert(currentPlayer + " has won!");
   game_over = true;
 });
 
 $('#start-game').on('click', function(e){
   console.log("start game button was pressed");
+  // fade in divs
+// var fadein = $('div.class');
+// $.each(fadein, function(i, item) {
+//      setTimeout(function() {
+//           $(item).fadeIn(1000); // duration of fadein
+//      }, 1000 * i); // duration between fadeins
+// });​
   spaces = [
     NaN, NaN, NaN,
     NaN, NaN, NaN,
@@ -103,6 +118,7 @@ $('#start-game').on('click', function(e){
   game_over = false;
   $('#board .space').removeClass(player1);
   $('#board .space').removeClass(player2);
+ 
   
 });
 
